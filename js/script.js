@@ -2,8 +2,11 @@
 const $ = selector => document.querySelector(selector);
 const log = message => console.log(message);
 
+//views properties
+const height = document.body.clientHeight;
+const width = document.body.clientWidth;
 
-const jumpHeight = 28
+const jumpHeight = 35
 const dinoHopArray = calcJump(jumpHeight);
 
 
@@ -11,11 +14,32 @@ const dinoHopArray = calcJump(jumpHeight);
 const dino = $('.dino');
 const background = $('.background');
 
+//set initial y position dino
+dino.style.bottom = '0px';
+
+//divs size
+const divSize = dino.offsetWidth;
+
+//cactus speed
+const cactus_speed = 7
+
 //fire when spacebar(32) get up
 const handleKeyUp = e => (e.keyCode == 32)? jump(dinoHopArray) : false ;
 
 //add eventListener to key up
 document.addEventListener('keyup', handleKeyUp);
+
+
+
+
+
+//        ++++GAME++++
+window.onload = () => {
+  autoCallCactus(cactus_speed)
+}
+
+
+
 
 
 //return jump array of y positions ex: [0,4,7,8,7,4,0]
@@ -91,10 +115,48 @@ function* plotDino(arr){
 let moveDino = value => dino.style.bottom = value+'px';
 
 
-
-function createCactus(){
+//generate cactus
+function createCactus(speed){
   const cactus = document.createElement('div');
   cactus.classList.add('cactus')
 
   background.appendChild(cactus)
+
+  let position = 0;
+
+  let moveLeft = setInterval(() => {
+    let cactusX = cactus.offsetLeft;
+    if(cactusX <= (0-divSize)){
+      background.removeChild(cactus)
+      clearInterval(moveLeft);
+    }else{
+      cactus.style.right = position+'px';
+      position+=speed;
+      checkColision(cactus);
+    }
+  }, 20);
+  
+  autoCallCactus(speed)
 }
+
+function autoCallCactus(tmp_speed){
+  setTimeout(() => {
+    createCactus(tmp_speed);
+  }, generateRandom());
+}
+
+function generateRandom(){
+  return (Math.random() * 1400) + 700
+}
+
+function checkColision(cactus){
+  const dinoY = dino.style.bottom.split('px')[0]
+  const cactusX = cactus.offsetLeft;
+  
+  if(cactusX <= divSize && cactusX >= -divSize && dinoY<= divSize){
+    //log(true)
+  }else{
+    //log(false);
+  }
+}
+
