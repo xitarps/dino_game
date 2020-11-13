@@ -105,12 +105,13 @@ const jump = (arr) => {
 
   //frame change every 20ms
   let jumpInterval = setInterval(() => {
-    if(!sound_is_playing){sound_is_playing= true; dino_hop.play()};
+    if(!sound_is_playing){sound_is_playing = true; dino_hop.play()};
+
     if(dinoPloter.next().done == true){
       clearInterval(jumpInterval);
       jumpInterval = null;
-      sound_is_playing= false;
-      dino_hop.currentTime = 0;
+      
+      if(sound_is_playing){sound_is_playing = false; dino_hop.currentTime = 0;};
     }
 
   }, 20);
