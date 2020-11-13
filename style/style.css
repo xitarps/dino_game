@@ -3,6 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-body::after{
-  content: 'css loaded';
+
+.dino {
+  width: 9vh;
+  height: 9vh;
+  background-color: green;
+  position: absolute;
+  bottom: 0;
 }
