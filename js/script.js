@@ -9,6 +9,7 @@ const dinoHopArray = calcJump(jumpHeight);
 
 //get dino div
 const dino = $('.dino');
+const background = $('.background');
 
 //fire when spacebar(32) get up
 const handleKeyUp = e => (e.keyCode == 32)? jump(dinoHopArray) : false ;
@@ -33,6 +34,7 @@ function calcJump(tmp_height){
 
   for (let i = 0; i <= distance; i++, x++) {
     
+    // https://www.mathsisfun.com/data/grapher-equation.html
     // f(x) = ax² + bx + c
     y = -( (a*(x**2)) + (b*x) + c);
 
@@ -87,3 +89,12 @@ function* plotDino(arr){
 
 //change dino y position CSS
 let moveDino = value => dino.style.bottom = value+'px';
+
+
+
+function createCactus(){
+  const cactus = document.createElement('div');
+  cactus.classList.add('cactus')
+
+  background.appendChild(cactus)
+}

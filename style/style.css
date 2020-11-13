@@ -1,3 +1,6 @@
+:root {
+  --base_size: 9vh;
+}
 * {
   padding: 0;
   margin: 0;
@@ -5,9 +8,29 @@
 }
 
 .dino {
-  width: 9vh;
-  height: 9vh;
+  width: var(--base_size);
+  height: var(--base_size);
+
+  background-color: #3775fc;
+  background-image: url("./../assets/dino.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  border-bottom-right-radius: 50%;
+  bottom: 0;
+}
+
+.cactus {
+  width: var(--base_size);
+  height: var(--base_size);
+
   background-color: green;
+  background-image: url("./../assets/cactus.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
   position: absolute;
   bottom: 0;
+  right: 0;
 }
