@@ -47,6 +47,7 @@ let sound_is_playing = false
 
 //        ++++GAME++++
 window.onload = () => {
+  setBackgroundHeight()
   setMessageListener();
   movefundo();
   start();
@@ -110,7 +111,7 @@ const jump = (arr) => {
     if(dinoPloter.next().done == true){
       clearInterval(jumpInterval);
       jumpInterval = null;
-      
+
       if(sound_is_playing){sound_is_playing = false; dino_hop.currentTime = 0;};
     }
 
@@ -233,3 +234,6 @@ function movefundo() {
   }, 20);
 }
 
+function setBackgroundHeight(){
+  $('.background').style.height = height+'px';
+}

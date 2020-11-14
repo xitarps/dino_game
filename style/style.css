@@ -13,9 +13,8 @@ body{
 .background{
   background-image: url('./../assets/background.png');
   width: 100vw;
-  height: 95vh;
+  height: 88vh;
   background-position-y: bottom;
-  background-position-x: 0px;
   background-repeat: repeat-x;
 }
 .dino {
