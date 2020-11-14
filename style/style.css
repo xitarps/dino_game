@@ -13,7 +13,7 @@ body{
 .background{
   background-image: url('./../assets/background.png');
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   background-position-y: bottom;
   background-position-x: 0px;
   background-repeat: repeat-x;
